@@ -73,13 +73,20 @@ impl Config {
                 path: DEFAULT_LOCAL_DB_PATH.to_string(),
             },
             Some(url) => match url.strip_prefix("file:") {
-                Some(path) if path.trim().is_empty() => return Err(Error::Config(format!(
+                Some(path) if path.trim().is_empty() => {
+                    return Err(Error::Config(format!(
                     "{ENV_TURSO_DATABASE_URL}=file: requires a path (e.g. file:./morning-local.db)"
-                ))),
+                )))
+                }
                 Some(path) => DatabaseTarget::Local {
                     path: path.to_string(),
                 },
                 None => {
+                    if is_plaintext_remote(&url) {
+                        return Err(Error::Config(format!(
+                            "{ENV_TURSO_DATABASE_URL} must use TLS (libsql:// / https://); plaintext is allowed only for localhost"
+                        )));
+                    }
                     let auth_token = get(ENV_TURSO_AUTH_TOKEN).ok_or_else(|| {
                         Error::Config(format!(
                             "{ENV_TURSO_AUTH_TOKEN} is required when {ENV_TURSO_DATABASE_URL} is a remote URL"
@@ -131,6 +138,25 @@ impl Config {
     }
 }
 
+/// `http://` / `ws://` で、ループバック以外のホストを指しているか。
+fn is_plaintext_remote(url: &str) -> bool {
+    let lower = url.to_ascii_lowercase();
+    let Some(rest) = lower
+        .strip_prefix("http://")
+        .or_else(|| lower.strip_prefix("ws://"))
+    else {
+        return false;
+    };
+    let authority = rest.split(['/', '?', '#']).next().unwrap_or("");
+    let host_port = authority.rsplit('@').next().unwrap_or("");
+    let host = if let Some(v6) = host_port.strip_prefix('[') {
+        v6.split(']').next().unwrap_or("")
+    } else {
+        host_port.split(':').next().unwrap_or("")
+    };
+    !matches!(host, "localhost" | "127.0.0.1" | "::1")
+}
+
 #[cfg(test)]
 mod tests {
     use std::collections::HashMap;
@@ -173,6 +199,24 @@ mod tests {
         ])
         .unwrap();
         assert!(matches!(c.database, DatabaseTarget::Remote { .. }));
+    }
+
+    #[test]
+    fn rejects_plaintext_remote_except_localhost() {
+        let with_token = |url: &str| {
+            config(&[
+                (ENV_TURSO_DATABASE_URL, url),
+                (ENV_TURSO_AUTH_TOKEN, "dummy"),
+            ])
+        };
+        assert!(with_token("http://example.turso.io").is_err());
+        assert!(with_token("ws://example.turso.io:8080/").is_err());
+        assert!(with_token("http://localhost.evil.example").is_err());
+        assert!(with_token("http://127.0.0.1:8080").is_ok());
+        assert!(with_token("http://localhost:8080").is_ok());
+        assert!(with_token("http://[::1]:8080").is_ok());
+        assert!(with_token("https://example.turso.io").is_ok());
+        assert!(with_token("libsql://example.turso.io").is_ok());
     }
 
     #[test]

@@ -37,7 +37,7 @@ cargo build --release
 | `GOOGLE_CLIENT_ID` | ○ | OAuth クライアント ID |
 | `GOOGLE_CLIENT_SECRET` | ○ | OAuth クライアントシークレット |
 | `GOOGLE_REFRESH_TOKEN` | ○ | 初回認可で得たリフレッシュトークン |
-| `TURSO_DATABASE_URL` | – | 例: `libsql://<db>-<org>.turso.io`。未設定ならローカルファイル `./morning-local.db` を使用。`file:<path>` でローカルファイルを指定可 |
+| `TURSO_DATABASE_URL` | – | 例: `libsql://<db>-<org>.turso.io`。未設定ならローカルファイル `./morning-local.db` を使用。`file:<path>` でローカルファイルを指定可。平文の `http://` / `ws://` は localhost 以外では拒否 |
 | `TURSO_AUTH_TOKEN` | リモート時 ○ | Turso の認証トークン |
 
 ## 書き込み先テーブル
