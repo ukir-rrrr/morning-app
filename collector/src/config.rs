@@ -73,6 +73,9 @@ impl Config {
                 path: DEFAULT_LOCAL_DB_PATH.to_string(),
             },
             Some(url) => match url.strip_prefix("file:") {
+                Some(path) if path.trim().is_empty() => return Err(Error::Config(format!(
+                    "{ENV_TURSO_DATABASE_URL}=file: requires a path (e.g. file:./morning-local.db)"
+                ))),
                 Some(path) => DatabaseTarget::Local {
                     path: path.to_string(),
                 },
@@ -151,6 +154,7 @@ mod tests {
                 path: DEFAULT_LOCAL_DB_PATH.into()
             }
         );
+        assert!(config(&[(ENV_TURSO_DATABASE_URL, "file:")]).is_err());
         let c = config(&[(ENV_TURSO_DATABASE_URL, "file:/tmp/dev.db")]).unwrap();
         assert_eq!(
             c.database,
