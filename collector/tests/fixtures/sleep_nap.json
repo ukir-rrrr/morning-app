@@ -1,0 +1,31 @@
+{
+  "dataPoints": [
+    {
+      "name": "users/me/dataTypes/sleep/dataPoints/48291736777",
+      "dataSource": { "recordingMethod": "PASSIVELY_MEASURED", "platform": "FITBIT" },
+      "sleep": {
+        "interval": {
+          "startTime": "2026-11-24T04:05:00Z",
+          "startUtcOffset": "32400s",
+          "endTime": "2026-11-24T04:52:00Z",
+          "endUtcOffset": "32400s"
+        },
+        "type": "CLASSIC",
+        "stages": [
+          { "startTime": "2026-11-24T04:05:00Z", "endTime": "2026-11-24T04:20:00Z", "type": "ASLEEP" },
+          { "startTime": "2026-11-24T04:20:00Z", "endTime": "2026-11-24T04:23:00Z", "type": "RESTLESS" },
+          { "startTime": "2026-11-24T04:23:00Z", "endTime": "2026-11-24T04:52:00Z", "type": "ASLEEP" }
+        ],
+        "metadata": { "processed": true, "nap": true, "stagesStatus": "REJECTED_NAP" },
+        "summary": {
+          "minutesInSleepPeriod": "47",
+          "minutesAsleep": "44",
+          "stagesSummary": [
+            { "type": "ASLEEP", "minutes": "44", "count": "2" },
+            { "type": "RESTLESS", "minutes": "3", "count": "1" }
+          ]
+        }
+      }
+    }
+  ]
+}

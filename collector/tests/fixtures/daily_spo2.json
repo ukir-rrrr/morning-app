@@ -1,0 +1,14 @@
+{
+  "dataPoints": [
+    {
+      "dataSource": { "recordingMethod": "DERIVED", "platform": "FITBIT" },
+      "dailyOxygenSaturation": {
+        "date": { "year": 2026, "month": 11, "day": 24 },
+        "averagePercentage": 95.6,
+        "lowerBoundPercentage": 93.1,
+        "upperBoundPercentage": 98.2,
+        "standardDeviationPercentage": 0.84
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "dataPoints": [
+    {
+      "dataSource": { "recordingMethod": "DERIVED", "platform": "FITBIT" },
+      "dailyRestingHeartRate": {
+        "date": { "year": 2026, "month": 11, "day": 24 },
+        "beatsPerMinute": "58"
+      }
+    }
+  ]
+}
