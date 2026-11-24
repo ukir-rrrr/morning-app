@@ -1,0 +1,58 @@
+{
+  "dataPoints": [
+    {
+      "name": "users/me/dataTypes/sleep/dataPoints/48291736501",
+      "dataSource": {
+        "recordingMethod": "PASSIVELY_MEASURED",
+        "platform": "FITBIT",
+        "device": { "displayName": "Pixel Watch 3", "formFactor": "WATCH" }
+      },
+      "sleep": {
+        "interval": {
+          "startTime": "2026-11-23T14:12:30Z",
+          "startUtcOffset": "32400s",
+          "endTime": "2026-11-23T21:41:00Z",
+          "endUtcOffset": "32400s",
+          "civilStartTime": {
+            "date": { "year": 2026, "month": 11, "day": 23 },
+            "time": { "hours": 23, "minutes": 12, "seconds": 30 }
+          },
+          "civilEndTime": {
+            "date": { "year": 2026, "month": 11, "day": 24 },
+            "time": { "hours": 6, "minutes": 41 }
+          }
+        },
+        "type": "STAGES",
+        "stages": [
+          { "startTime": "2026-11-23T14:12:30Z", "endTime": "2026-11-23T14:30:00Z", "type": "LIGHT", "startUtcOffset": "32400s", "endUtcOffset": "32400s" },
+          { "startTime": "2026-11-23T14:30:00Z", "endTime": "2026-11-23T15:45:00Z", "type": "DEEP", "startUtcOffset": "32400s", "endUtcOffset": "32400s" },
+          { "startTime": "2026-11-23T15:45:00Z", "endTime": "2026-11-23T16:10:00Z", "type": "REM", "startUtcOffset": "32400s", "endUtcOffset": "32400s" },
+          { "startTime": "2026-11-23T16:10:00Z", "endTime": "2026-11-23T16:18:00Z", "type": "AWAKE", "startUtcOffset": "32400s", "endUtcOffset": "32400s" },
+          { "startTime": "2026-11-23T16:18:00Z", "endTime": "2026-11-23T21:41:00Z", "type": "LIGHT", "startUtcOffset": "32400s", "endUtcOffset": "32400s" }
+        ],
+        "metadata": {
+          "processed": true,
+          "mainSleep": true,
+          "manuallyEdited": false,
+          "stagesStatus": "SUCCEEDED"
+        },
+        "summary": {
+          "minutesInSleepPeriod": "448",
+          "minutesAfterWakeUp": "0",
+          "minutesToFallAsleep": "0",
+          "minutesAsleep": "397",
+          "minutesAwake": "51",
+          "stagesSummary": [
+            { "type": "AWAKE", "minutes": "51", "count": "18" },
+            { "type": "LIGHT", "minutes": "217", "count": "24" },
+            { "type": "DEEP", "minutes": "84", "count": "4" },
+            { "type": "REM", "minutes": "96", "count": "6" }
+          ]
+        },
+        "createTime": "2026-11-23T21:52:11.123Z",
+        "updateTime": "2026-11-23T21:52:11.123Z"
+      }
+    }
+  ],
+  "nextPageToken": ""
+}

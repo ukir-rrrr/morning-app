@@ -1,0 +1,43 @@
+{
+  "dataPoints": [
+    {
+      "name": "users/me/dataTypes/exercise/dataPoints/7340012345",
+      "dataSource": {
+        "recordingMethod": "ACTIVELY_MEASURED",
+        "platform": "FITBIT",
+        "device": { "displayName": "Pixel Watch 3", "formFactor": "WATCH" }
+      },
+      "exercise": {
+        "interval": {
+          "startTime": "2026-11-22T22:30:00Z",
+          "startUtcOffset": "32400s",
+          "endTime": "2026-11-22T23:05:12Z",
+          "endUtcOffset": "32400s",
+          "civilStartTime": {
+            "date": { "year": 2026, "month": 11, "day": 23 },
+            "time": { "hours": 7, "minutes": 30 }
+          },
+          "civilEndTime": {
+            "date": { "year": 2026, "month": 11, "day": 23 },
+            "time": { "hours": 8, "minutes": 5, "seconds": 12 }
+          }
+        },
+        "exerciseType": "RUNNING",
+        "displayName": "Run",
+        "activeDuration": "1984.5s",
+        "metricsSummary": {
+          "steps": "5321",
+          "caloriesKcal": 312.4,
+          "distanceMillimeters": 5023400,
+          "averageHeartRateBeatsPerMinute": "148",
+          "averagePaceSecondsPerMeter": 0.395,
+          "activeZoneMinutes": "28"
+        },
+        "exerciseMetadata": { "hasGps": true },
+        "createTime": "2026-11-22T23:06:01Z",
+        "updateTime": "2026-11-22T23:06:01Z"
+      }
+    }
+  ],
+  "nextPageToken": ""
+}
